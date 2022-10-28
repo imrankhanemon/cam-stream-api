@@ -69,7 +69,7 @@ public class CamStreamController : ControllerBase
     #region Methods
 
     // [HttpGet, Route("[action]")]
-    // public async Task<IActionResult> StreamCam1(CancellationToken cancellationToken)
+    // public FileStreamResult StreamCam1(CancellationToken cancellationToken)
     // {
     //     const string contentType = "application/octet-stream";
     //     return File(_cameraService.Cam1Stream, contentType, enableRangeProcessing: true);
@@ -80,10 +80,9 @@ public class CamStreamController : ControllerBase
     {
         Response.ContentType = "multipart/x-mixed-replace; boundary=frame";
         Response.Headers.Add("Connection", "Keep-Alive");
-
         _cameraService.Cam1FrameReady += CameraServiceOnCam1FrameReady;
-
         await Response.StartAsync();
+        // wait forever
         await new TaskCompletionSource().Task;
     }
 

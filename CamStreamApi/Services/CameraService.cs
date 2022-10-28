@@ -27,6 +27,7 @@ public class CameraService : IHostedService
 
     #region Utilities
 
+    // bad naming conventions eh?
     private async void Cam1OnFrameReady(object? sender, Mat e)
     {
         // _logger.LogDebug("Frame retrieved.");
