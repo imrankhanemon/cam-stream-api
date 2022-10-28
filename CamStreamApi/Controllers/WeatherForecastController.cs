@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace StreamApi.Controllers;
+namespace CamStreamApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]

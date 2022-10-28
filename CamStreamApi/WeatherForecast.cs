@@ -1,4 +1,4 @@
-namespace StreamApi;
+namespace CamStreamApi;
 
 public class WeatherForecast
 {

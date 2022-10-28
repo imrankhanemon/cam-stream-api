@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamApi", "StreamApi\StreamApi.csproj", "{4F30051D-6021-495C-BC92-97EA33121332}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CamStreamApi", "CamStreamApi\CamStreamApi.csproj", "{4F30051D-6021-495C-BC92-97EA33121332}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
