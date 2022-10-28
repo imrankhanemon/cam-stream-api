@@ -5,13 +5,16 @@ namespace CamStreamApi.Utilities;
 
 public class OpenCvCam : IDisposable
 {
+    #region Fields
 
     private readonly VideoCapture _videoCapture;
 
     public event EventHandler<Mat>? FrameReady;
     public bool IsOpened => _videoCapture.IsOpened;
 
-    protected void OnFrameReady(Mat frame) => FrameReady?.Invoke(this, frame);
+    #endregion
+
+    #region Ctors
 
     public OpenCvCam(int camIndex)
     {
@@ -20,9 +23,11 @@ public class OpenCvCam : IDisposable
         _videoCapture.Start();
     }
 
-    public void Start() => _videoCapture.Start();
+    #endregion
 
-    public void Stop() => _videoCapture.Stop();
+    #region Utilities
+
+    protected void OnFrameReady(Mat frame) => FrameReady?.Invoke(this, frame);
 
     private void VideoCaptureOnImageGrabbed(object? sender, EventArgs e)
     {
@@ -31,8 +36,18 @@ public class OpenCvCam : IDisposable
         OnFrameReady(frame);
     }
 
+    #endregion
+
+    #region Methods
+
+    public void Start() => _videoCapture.Start();
+
+    public void Stop() => _videoCapture.Stop();
+
     public void Dispose()
     {
         _videoCapture.Dispose();
     }
+
+    #endregion
 }
