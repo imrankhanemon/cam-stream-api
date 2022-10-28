@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CamStreamApi.Utilities;
 
-public class OpenCvCam
+public class OpenCvCam : IDisposable
 {
 
     private readonly VideoCapture _videoCapture;
@@ -20,10 +20,19 @@ public class OpenCvCam
         _videoCapture.Start();
     }
 
+    public void Start() => _videoCapture.Start();
+
+    public void Stop() => _videoCapture.Stop();
+
     private void VideoCaptureOnImageGrabbed(object? sender, EventArgs e)
     {
         var frame = new Mat();
         _videoCapture.Read(frame);
         OnFrameReady(frame);
+    }
+
+    public void Dispose()
+    {
+        _videoCapture.Dispose();
     }
 }

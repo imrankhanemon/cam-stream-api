@@ -1,4 +1,5 @@
 using CamStreamApi.Services;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +9,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddHostedService<CameraService>();
+builder.Services.AddSingleton<CameraService>();
+builder.Services.AddHostedService<CameraService>(provider => provider.GetService<CameraService>()!);
+builder.Services.Configure<KestrelServerOptions>(options => options.AllowSynchronousIO = true);
 
 var app = builder.Build();
 
