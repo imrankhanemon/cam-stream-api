@@ -68,6 +68,7 @@ public class CamStreamController : ControllerBase
 
     #region Methods
 
+    // too good to be true
     // [HttpGet, Route("[action]")]
     // public FileStreamResult StreamCam1(CancellationToken cancellationToken)
     // {
@@ -79,10 +80,9 @@ public class CamStreamController : ControllerBase
     public async Task Cam1Stream()
     {
         Response.ContentType = "multipart/x-mixed-replace; boundary=frame";
-        Response.Headers.Add("Connection", "Keep-Alive");
         _cameraService.Cam1FrameReady += CameraServiceOnCam1FrameReady;
         await Response.StartAsync();
-        // wait forever
+        // basically wait forever
         await new TaskCompletionSource().Task;
     }
 
