@@ -11,7 +11,4 @@ A pathetic attempt to implement a camera live streaming service in ASP.NET core 
 ```shell
 $ dotnet run
 ```
-3. If everything goes right, a magical console window should appear out of thin air and somewhere in the window there's a line that reads "Now listening on: (some random link)". 
-4. Paste the said link in your favorite browser and type "/Cam1Stream" at the end and then and hit enter.
-5. Smile at your beautiful face.
-
+3. Open your favorite browser and head to https://localhost:5001/Cam1Stream
